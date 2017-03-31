@@ -19,13 +19,13 @@
         <bpmn:flowNodeRef>EndEvent_0o13ikg</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_03kmw3c</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>ExclusiveGateway_1dlu4q2</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_15du57k</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_088z8ce</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0d9a8jx</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0joe8qi</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_0ilgnyt</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>user_task_check_information</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_15du57k</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_0zcnd6v" name="Insurance agent">
         <bpmn:flowNodeRef>ExclusiveGateway_1fyr1ww</bpmn:flowNodeRef>
@@ -48,13 +48,13 @@
     </bpmn:businessRuleTask>
     <bpmn:sequenceFlow id="SequenceFlow_0vb90go" sourceRef="BusinessRuleTask_0dx6k5x" targetRef="ExclusiveGateway_1dlu4q2" />
     <bpmn:sequenceFlow id="SequenceFlow_03xv9l9" name="Application accepted" sourceRef="ExclusiveGateway_1dlu4q2" targetRef="Task_088z8ce">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Accept}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assesmentResult == 'Accept'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0d5n4l2" name="Application rejected" sourceRef="ExclusiveGateway_1dlu4q2" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Reject}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assesmentResult == 'Reject'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_19mmeg0" name="Alternatives triggered" sourceRef="ExclusiveGateway_1dlu4q2" targetRef="Task_03344ln">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Alternative}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assesmentResult == 'Alternative'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1cvoo6p" sourceRef="Task_12cx0lg" targetRef="user_task_check_information" />
     <bpmn:sequenceFlow id="SequenceFlow_0qadsz2" sourceRef="user_task_check_information" targetRef="ExclusiveGateway_1igm95w" />
@@ -90,21 +90,21 @@
     <bpmn:sequenceFlow id="SequenceFlow_1yoqrxv" sourceRef="Task_0d9a8jx" targetRef="EndEvent_0o13ikg" />
     <bpmn:sequenceFlow id="SequenceFlow_0et8xrj" sourceRef="Task_03344ln" targetRef="ExclusiveGateway_1fyr1ww" />
     <bpmn:sequenceFlow id="SequenceFlow_0787jw0" name="Yes" sourceRef="ExclusiveGateway_1fyr1ww" targetRef="Task_0ilgnyt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Accept}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Accept'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0jo5p54" name="no" sourceRef="ExclusiveGateway_1fyr1ww" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Reject}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Reject'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1tjxp6u" sourceRef="Task_0ilgnyt" targetRef="Task_0joe8qi" />
     <bpmn:sequenceFlow id="SequenceFlow_1cqvwqs" name="alternative" sourceRef="ExclusiveGateway_03kmw3c" targetRef="Task_03344ln">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Alternative}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Alternative'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1xqt5co" name="no" sourceRef="ExclusiveGateway_03kmw3c" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Reject}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Reject'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0f78xlk" sourceRef="Task_15du57k" targetRef="ExclusiveGateway_03kmw3c" />
     <bpmn:sequenceFlow id="SequenceFlow_0zohnex" name="yes" sourceRef="ExclusiveGateway_03kmw3c" targetRef="Task_0ilgnyt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Accept}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Accept'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_1dlu4q2" name="Assesssment result?">
       <bpmn:incoming>SequenceFlow_0vb90go</bpmn:incoming>
@@ -113,10 +113,6 @@
       <bpmn:outgoing>SequenceFlow_19mmeg0</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="SequenceFlow_0338jur" sourceRef="Task_088z8ce" targetRef="Task_15du57k" />
-    <bpmn:task id="Task_15du57k" name="Confirm assessment result">
-      <bpmn:incoming>SequenceFlow_0338jur</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0f78xlk</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:task id="Task_088z8ce" name="Calculate premium">
       <bpmn:incoming>SequenceFlow_03xv9l9</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0338jur</bpmn:outgoing>
@@ -154,6 +150,10 @@
       <bpmn:incoming>SequenceFlow_1jwi8sl</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1cvoo6p</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0qadsz2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Task_15du57k" name="Confirm assessment result" camunda:formKey="embedded:app:forms/confirmAssessment.html" camunda:assignee="demo">
+      <bpmn:incoming>SequenceFlow_0338jur</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0f78xlk</bpmn:outgoing>
     </bpmn:userTask>
   </bpmn:process>
   <bpmn:process id="Process_091g9qa" isExecutable="false" />
@@ -352,14 +352,11 @@
           <dc:Bounds x="1601.5" y="127.5" width="0" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Task_15du57k_di" bpmnElement="Task_15du57k">
-        <dc:Bounds x="1023.6570302233904" y="220" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_0f78xlk_di" bpmnElement="SequenceFlow_0f78xlk">
         <di:waypoint xsi:type="dc:Point" x="1124" y="260" />
         <di:waypoint xsi:type="dc:Point" x="1153" y="260" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1138.5" y="238.5" width="0" height="13" />
+          <dc:Bounds x="1093.5" y="238.5" width="90" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="ExclusiveGateway_03kmw3c_di" bpmnElement="ExclusiveGateway_03kmw3c" isMarkerVisible="true">
@@ -416,7 +413,7 @@
         <di:waypoint xsi:type="dc:Point" x="1000" y="260" />
         <di:waypoint xsi:type="dc:Point" x="1024" y="260" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1012" y="238.5" width="0" height="13" />
+          <dc:Bounds x="967" y="238.5" width="90" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_0bccc5i_di" bpmnElement="Participant_0bccc5i">
@@ -437,6 +434,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="UserTask_0pcjt1o_di" bpmnElement="user_task_check_information">
         <dc:Bounds x="402" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1chjdn4_di" bpmnElement="Task_15du57k">
+        <dc:Bounds x="1024" y="220" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
