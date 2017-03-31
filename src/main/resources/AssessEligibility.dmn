@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_0vidlpq" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="AssessEligibility" name="">
+    <extensionElements>
+      <biodi:bounds x="200" y="200" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Age" camunda:inputVariable="">
+        <inputExpression id="inputExpression1" typeRef="integer">        <text>age</text>
+</inputExpression>
+      </input>
+      <output id="output1" label="Assesment Result" name="assesmentResult" typeRef="string">
+        <outputValues id="UnaryTests_1tbc8a4">        <text><![CDATA["Reject","Accept","Alternative"]]></text>
+</outputValues>
+      </output>
+      <rule id="row-869084407-24">
+        <inputEntry id="UnaryTests_1mo7cxt">        <text><![CDATA[>= 60]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1x7wc2k">        <text><![CDATA["Reject"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-869084407-25">
+        <inputEntry id="UnaryTests_09d4199">        <text><![CDATA[< 60]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0fm3i4m">        <text><![CDATA["Accept"]]></text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
