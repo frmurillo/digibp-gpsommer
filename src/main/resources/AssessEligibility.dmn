@@ -1,28 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_0vidlpq" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
-  <decision id="AssessEligibility" name="">
+  <decision id="RiskScoring" name="">
     <extensionElements>
-      <biodi:bounds x="200" y="200" width="180" height="80" />
+      <biodi:bounds x="457" y="272" width="180" height="80" />
     </extensionElements>
-    <decisionTable id="decisionTable">
+    <decisionTable id="decisionTable" hitPolicy="COLLECT" aggregation="SUM">
       <input id="input1" label="Age" camunda:inputVariable="">
         <inputExpression id="inputExpression1" typeRef="integer">        <text>age</text>
 </inputExpression>
       </input>
-      <output id="output1" label="Assesment Result" name="assesmentResult" typeRef="string">
-        <outputValues id="UnaryTests_1tbc8a4">        <text><![CDATA["Reject","Accept","Alternative"]]></text>
-</outputValues>
-      </output>
+      <input id="InputClause_0fsrz74" label="Smoking packs/year" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0bfddjq" typeRef="integer">        <text>smockingPerYear</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_0lnpnvu" label="BMI" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_1qt6l1k" typeRef="integer">        <text>bmi</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_1yk0olr" label="Able to work?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_106uk7j" typeRef="boolean">        <text>workingAbility</text>
+</inputExpression>
+      </input>
+      <output id="output1" label="Risk Score" name="riskScore" typeRef="integer" />
+      <output id="OutputClause_1hyhsta" label="Further check needed?" name="furtherCheck" typeRef="boolean" />
       <rule id="row-869084407-24">
         <inputEntry id="UnaryTests_1mo7cxt">        <text><![CDATA[>= 60]]></text>
 </inputEntry>
-        <outputEntry id="LiteralExpression_1x7wc2k">        <text><![CDATA["Reject"]]></text>
+        <inputEntry id="UnaryTests_10uhmw7">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1dkd3go">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1iky6uz">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1x7wc2k">        <text>10</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_10ig0oz">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-869084407-25">
-        <inputEntry id="UnaryTests_09d4199">        <text><![CDATA[< 60]]></text>
+        <inputEntry id="UnaryTests_09d4199">        <text>]45..60[</text>
 </inputEntry>
-        <outputEntry id="LiteralExpression_0fm3i4m">        <text><![CDATA["Accept"]]></text>
+        <inputEntry id="UnaryTests_0n1do9k">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0aw2rr9">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1jdzfua">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0fm3i4m">        <text>5</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_04zg5xr">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-2">
+        <inputEntry id="UnaryTests_0b3xykf">        <text><![CDATA[<= 45]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1ea158r">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0xgxl2o">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0p8odo3">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0r0kjo9">        <text>1</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_1julorm">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-3">
+        <inputEntry id="UnaryTests_1cefvio">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_14g9t9h">        <text><![CDATA[>= 200]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0rdx8u9">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0t2r6gu">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1qqnvn4">        <text>10</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_1hudsbs">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-4">
+        <inputEntry id="UnaryTests_04crk3e">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0rqb7ku">        <text>]100..200[</text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0mse1t4">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0p28ulf">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1d0w81j">        <text>5</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_0eobv6l">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-5">
+        <inputEntry id="UnaryTests_154g303">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0qgwjez">        <text><![CDATA[<= 100]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1tw7gs5">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0e38dkj">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_05kuto3">        <text>1</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_1n90iu5">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-6">
+        <inputEntry id="UnaryTests_04diys3">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0f90s25">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0ze4qfv">        <text><![CDATA[>= 20]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_04hius2">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0rsf5xr">        <text>10</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_1g2erwp">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-7">
+        <inputEntry id="UnaryTests_1gxrggj">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0k0ux29">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_00893kd">        <text><![CDATA[< 20]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1329b9y">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0libvss">        <text>5</text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_0eg0o0y">        <text></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-8">
+        <inputEntry id="UnaryTests_0c69lpr">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_17ftufr">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0k7xeb3">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_06hrfg1">        <text>false</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0yc168f">        <text></text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_0tltbye">        <text>true</text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-9">
+        <inputEntry id="UnaryTests_1cggtdk">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1da0ew9">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0sdeue2">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0cckrw5">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1t268x6">        <text></text>
+</outputEntry>
+        <outputEntry id="LiteralExpression_0mcas9o">        <text>false</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="AssessEligibility" name="">
+    <extensionElements>
+      <biodi:bounds x="458" y="84" width="180" height="80" />
+      <biodi:edge source="RiskScoring">
+        <biodi:waypoints x="550" y="272" />
+        <biodi:waypoints x="557" y="164" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredDecision href="#RiskScoring" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_1ix1w29">
+      <input id="InputClause_18fjqka" label="Risk Score" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_00v9gfp" typeRef="integer">        <text>riskScore</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_1mle9vr" label="Further check needed?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0jhywc9" typeRef="boolean">        <text>furtherCheck</text>
+</inputExpression>
+      </input>
+      <output id="OutputClause_0qlw58f" label="Result of Assessment" name="AssessmentResult" typeRef="string">
+        <outputValues id="UnaryTests_1fjg9v1">        <text><![CDATA["Accepted","Rejected","Alternative"]]></text>
+</outputValues>
+      </output>
+      <rule id="row-30513466-1">
+        <description></description>
+        <inputEntry id="UnaryTests_1f3u24s">        <text><![CDATA[> 20]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_05ow4ut">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_12brzac">        <text><![CDATA["Rejected"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-10">
+        <inputEntry id="UnaryTests_0uh16j0">        <text><![CDATA[<= 20]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0r5gri0">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0aoemhv">        <text><![CDATA["Accepted"]]></text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-11">
+        <inputEntry id="UnaryTests_0km8vpg">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_1yrmdcs">        <text>true</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1o9vooc">        <text><![CDATA["Alternative"]]></text>
 </outputEntry>
       </rule>
     </decisionTable>
