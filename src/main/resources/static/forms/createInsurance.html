@@ -1,25 +1,44 @@
-<strong>Create Tweet</strong>
-
+<strong>Create Insurance</strong>
+smokingPerYear, bmi, workingAbility (boolean, rest int)
 <form role="form" class="form-horizontal">
   <div class="control-group">
-    <label class="control-label">Email</label>
+    <label class="control-label">Age</label>
     <div class="controls">
       <input type="text" class="form-control" 
-        cam-variable-name="email"
-        cam-variable-type="String"
-        required  
-        ng-pattern="/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/"
+        cam-variable-name="age"
+        cam-variable-type="Integer"
+        required
         />
     </div>
   </div>
   <div class="control-group">
-    <label class="control-label">Content</label>
+    <label class="control-label">Smoking per Year</label>
     <div class="controls">
       <input type="text" class="form-control"
-		cam-variable-name="content"
-        cam-variable-type="String"        
-        required
-        />
+             cam-variable-name="smokingPerYear"
+             cam-variable-type="Integer"
+             required
+      />
     </div>
-  </div>  
+  </div>
+  <div class="control-group">
+    <label class="control-label">BMI</label>
+    <div class="controls">
+      <input type="text" class="form-control"
+             cam-variable-name="bmi"
+             cam-variable-type="Integer"
+             required
+      />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Able to work</label>
+    <div class="controls">
+      <input type="checkbox" class="form-control"
+             cam-variable-name="workingAbility"
+             cam-variable-type="Boolean"
+             required
+      />
+    </div>
+  </div>
 </form>
