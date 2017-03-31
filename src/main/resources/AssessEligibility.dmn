@@ -10,19 +10,14 @@
 </inputExpression>
       </input>
       <input id="InputClause_0fsrz74" label="Smoking packs/year" camunda:inputVariable="">
-        <inputExpression id="LiteralExpression_0bfddjq" typeRef="integer">        <text>smockingPerYear</text>
+        <inputExpression id="LiteralExpression_0bfddjq" typeRef="integer">        <text>smokingPerYear</text>
 </inputExpression>
       </input>
       <input id="InputClause_0lnpnvu" label="BMI" camunda:inputVariable="">
         <inputExpression id="LiteralExpression_1qt6l1k" typeRef="integer">        <text>bmi</text>
 </inputExpression>
       </input>
-      <input id="InputClause_1yk0olr" label="Able to work?" camunda:inputVariable="">
-        <inputExpression id="LiteralExpression_106uk7j" typeRef="boolean">        <text>workingAbility</text>
-</inputExpression>
-      </input>
       <output id="output1" label="Risk Score" name="riskScore" typeRef="integer" />
-      <output id="OutputClause_1hyhsta" label="Further check needed?" name="furtherCheck" typeRef="boolean" />
       <rule id="row-869084407-24">
         <inputEntry id="UnaryTests_1mo7cxt">        <text><![CDATA[>= 60]]></text>
 </inputEntry>
@@ -30,11 +25,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_1dkd3go">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_1iky6uz">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_1x7wc2k">        <text>10</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_10ig0oz">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-869084407-25">
@@ -44,11 +35,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0aw2rr9">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_1jdzfua">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_0fm3i4m">        <text>5</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_04zg5xr">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-2">
@@ -58,11 +45,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0xgxl2o">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_0p8odo3">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_0r0kjo9">        <text>1</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_1julorm">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-3">
@@ -72,11 +55,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0rdx8u9">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_0t2r6gu">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_1qqnvn4">        <text>10</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_1hudsbs">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-4">
@@ -86,11 +65,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0mse1t4">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_0p28ulf">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_1d0w81j">        <text>5</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_0eobv6l">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-5">
@@ -100,11 +75,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_1tw7gs5">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_0e38dkj">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_05kuto3">        <text>1</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_1n90iu5">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-6">
@@ -114,11 +85,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0ze4qfv">        <text><![CDATA[>= 20]]></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_04hius2">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_0rsf5xr">        <text>10</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_1g2erwp">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-7">
@@ -128,11 +95,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_00893kd">        <text><![CDATA[< 20]]></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_1329b9y">        <text></text>
-</inputEntry>
         <outputEntry id="LiteralExpression_0libvss">        <text>5</text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_0eg0o0y">        <text></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-8">
@@ -142,11 +105,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0k7xeb3">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_06hrfg1">        <text>false</text>
-</inputEntry>
         <outputEntry id="LiteralExpression_0yc168f">        <text></text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_0tltbye">        <text>true</text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-9">
@@ -156,11 +115,7 @@
 </inputEntry>
         <inputEntry id="UnaryTests_0sdeue2">        <text></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_0cckrw5">        <text>true</text>
-</inputEntry>
         <outputEntry id="LiteralExpression_1t268x6">        <text></text>
-</outputEntry>
-        <outputEntry id="LiteralExpression_0mcas9o">        <text>false</text>
 </outputEntry>
       </rule>
     </decisionTable>
@@ -181,12 +136,12 @@
         <inputExpression id="LiteralExpression_00v9gfp" typeRef="integer">        <text>riskScore</text>
 </inputExpression>
       </input>
-      <input id="InputClause_1mle9vr" label="Further check needed?" camunda:inputVariable="">
-        <inputExpression id="LiteralExpression_0jhywc9" typeRef="boolean">        <text>furtherCheck</text>
+      <input id="InputClause_1mle9vr" label="Ability to work?" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0jhywc9" typeRef="boolean">        <text>workingAbility</text>
 </inputExpression>
       </input>
       <output id="OutputClause_0qlw58f" label="Result of Assessment" name="AssessmentResult" typeRef="string">
-        <outputValues id="UnaryTests_1fjg9v1">        <text><![CDATA["Accepted","Rejected","Alternative"]]></text>
+        <outputValues id="UnaryTests_1fjg9v1">        <text><![CDATA["Reject","Accept","Alternative"]]></text>
 </outputValues>
       </output>
       <rule id="row-30513466-1">
@@ -195,21 +150,21 @@
 </inputEntry>
         <inputEntry id="UnaryTests_05ow4ut">        <text></text>
 </inputEntry>
-        <outputEntry id="LiteralExpression_12brzac">        <text><![CDATA["Rejected"]]></text>
+        <outputEntry id="LiteralExpression_12brzac">        <text><![CDATA["Reject"]]></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-10">
         <inputEntry id="UnaryTests_0uh16j0">        <text><![CDATA[<= 20]]></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_0r5gri0">        <text></text>
+        <inputEntry id="UnaryTests_0r5gri0">        <text>true</text>
 </inputEntry>
-        <outputEntry id="LiteralExpression_0aoemhv">        <text><![CDATA["Accepted"]]></text>
+        <outputEntry id="LiteralExpression_0aoemhv">        <text><![CDATA["Accept"]]></text>
 </outputEntry>
       </rule>
       <rule id="row-30513466-11">
-        <inputEntry id="UnaryTests_0km8vpg">        <text></text>
+        <inputEntry id="UnaryTests_0km8vpg">        <text><![CDATA[<= 20]]></text>
 </inputEntry>
-        <inputEntry id="UnaryTests_1yrmdcs">        <text>true</text>
+        <inputEntry id="UnaryTests_1yrmdcs">        <text>false</text>
 </inputEntry>
         <outputEntry id="LiteralExpression_1o9vooc">        <text><![CDATA["Alternative"]]></text>
 </outputEntry>
