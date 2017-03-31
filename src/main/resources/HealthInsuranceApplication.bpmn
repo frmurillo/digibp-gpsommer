@@ -42,7 +42,7 @@
       <bpmn:incoming>SequenceFlow_info_complete_no</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1cvoo6p</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:businessRuleTask id="BusinessRuleTask_0dx6k5x" name="Assess eligibilty" camunda:resultVariable="assesmentResult" camunda:decisionRef="AssessEligibility" camunda:mapDecisionResult="singleEntry">
+    <bpmn:businessRuleTask id="BusinessRuleTask_0dx6k5x" name="Assess eligibilty" camunda:resultVariable="assessmentResult" camunda:decisionRef="AssessEligibility" camunda:mapDecisionResult="singleEntry">
       <bpmn:incoming>SequenceFlow_info_complete_yes</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0vb90go</bpmn:outgoing>
     </bpmn:businessRuleTask>
