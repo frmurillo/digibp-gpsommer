@@ -48,13 +48,13 @@
     </bpmn:businessRuleTask>
     <bpmn:sequenceFlow id="SequenceFlow_0vb90go" sourceRef="BusinessRuleTask_0dx6k5x" targetRef="ExclusiveGateway_1dlu4q2" />
     <bpmn:sequenceFlow id="SequenceFlow_03xv9l9" name="Application accepted" sourceRef="ExclusiveGateway_1dlu4q2" targetRef="Task_088z8ce">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assesmentResult == 'Accept'}]]></bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assessmentResult == 'Accept'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0d5n4l2" name="Application rejected" sourceRef="ExclusiveGateway_1dlu4q2" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assesmentResult == 'Reject'}]]></bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assessmentResult == 'Reject'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_19mmeg0" name="Alternatives triggered" sourceRef="ExclusiveGateway_1dlu4q2" targetRef="Task_03344ln">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assesmentResult == 'Alternative'}]]></bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${assessmentResult == 'Alternative'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1cvoo6p" sourceRef="Task_12cx0lg" targetRef="user_task_check_information" />
     <bpmn:sequenceFlow id="SequenceFlow_0qadsz2" sourceRef="user_task_check_information" targetRef="ExclusiveGateway_1igm95w" />
@@ -142,7 +142,7 @@
       <bpmn:incoming>SequenceFlow_1cqvwqs</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0et8xrj</bpmn:outgoing>
     </bpmn:subProcess>
-    <bpmn:startEvent id="StartEvent_1">
+    <bpmn:startEvent id="StartEvent_1" camunda:formKey="embedded:app:forms/createInsurance.html">
       <bpmn:outgoing>SequenceFlow_1jwi8sl</bpmn:outgoing>
       <bpmn:messageEventDefinition messageRef="Message_0dshzfk" />
     </bpmn:startEvent>
