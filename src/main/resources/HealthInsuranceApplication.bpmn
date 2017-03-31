@@ -59,10 +59,10 @@
     <bpmn:sequenceFlow id="SequenceFlow_1cvoo6p" sourceRef="Task_12cx0lg" targetRef="user_task_check_information" />
     <bpmn:sequenceFlow id="SequenceFlow_0qadsz2" sourceRef="user_task_check_information" targetRef="ExclusiveGateway_1igm95w" />
     <bpmn:sequenceFlow id="SequenceFlow_info_complete_yes" name="Yes" sourceRef="ExclusiveGateway_1igm95w" targetRef="BusinessRuleTask_0dx6k5x">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${infoComplete == true}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_info_complete_no" name="No" sourceRef="ExclusiveGateway_1igm95w" targetRef="Task_12cx0lg">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${infoComplete == false}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:task id="Task_1op5t42" name="Store contract">
       <bpmn:incoming>SequenceFlow_010h5oo</bpmn:incoming>
