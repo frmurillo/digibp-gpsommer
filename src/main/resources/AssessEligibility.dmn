@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_0vidlpq" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
-  <decision id="RiskScoring" name="">
+  <decision id="RiskScoring" name="Risk Score">
     <extensionElements>
       <biodi:bounds x="457" y="272" width="180" height="80" />
     </extensionElements>
@@ -98,29 +98,9 @@
         <outputEntry id="LiteralExpression_0libvss">        <text>5</text>
 </outputEntry>
       </rule>
-      <rule id="row-30513466-8">
-        <inputEntry id="UnaryTests_0c69lpr">        <text></text>
-</inputEntry>
-        <inputEntry id="UnaryTests_17ftufr">        <text></text>
-</inputEntry>
-        <inputEntry id="UnaryTests_0k7xeb3">        <text></text>
-</inputEntry>
-        <outputEntry id="LiteralExpression_0yc168f">        <text></text>
-</outputEntry>
-      </rule>
-      <rule id="row-30513466-9">
-        <inputEntry id="UnaryTests_1cggtdk">        <text></text>
-</inputEntry>
-        <inputEntry id="UnaryTests_1da0ew9">        <text></text>
-</inputEntry>
-        <inputEntry id="UnaryTests_0sdeue2">        <text></text>
-</inputEntry>
-        <outputEntry id="LiteralExpression_1t268x6">        <text></text>
-</outputEntry>
-      </rule>
     </decisionTable>
   </decision>
-  <decision id="AssessEligibility" name="">
+  <decision id="AssessEligibility" name="Application Assessment">
     <extensionElements>
       <biodi:bounds x="458" y="84" width="180" height="80" />
       <biodi:edge source="RiskScoring">
@@ -140,12 +120,11 @@
         <inputExpression id="LiteralExpression_0jhywc9" typeRef="boolean">        <text>workingAbility</text>
 </inputExpression>
       </input>
-      <output id="OutputClause_0qlw58f" label="Result of Assessment" name="AssessmentResult" typeRef="string">
+      <output id="OutputClause_0qlw58f" label="Result of Assessment" name="assessmentResult" typeRef="string">
         <outputValues id="UnaryTests_1fjg9v1">        <text><![CDATA["Reject","Accept","Alternative"]]></text>
 </outputValues>
       </output>
       <rule id="row-30513466-1">
-        <description></description>
         <inputEntry id="UnaryTests_1f3u24s">        <text><![CDATA[> 20]]></text>
 </inputEntry>
         <inputEntry id="UnaryTests_05ow4ut">        <text></text>
