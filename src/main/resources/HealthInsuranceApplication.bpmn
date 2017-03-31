@@ -90,21 +90,21 @@
     <bpmn:sequenceFlow id="SequenceFlow_1yoqrxv" sourceRef="Task_0d9a8jx" targetRef="EndEvent_0o13ikg" />
     <bpmn:sequenceFlow id="SequenceFlow_0et8xrj" sourceRef="Task_03344ln" targetRef="ExclusiveGateway_1fyr1ww" />
     <bpmn:sequenceFlow id="SequenceFlow_0787jw0" name="Yes" sourceRef="ExclusiveGateway_1fyr1ww" targetRef="Task_0ilgnyt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Y</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Accept}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0jo5p54" name="no" sourceRef="ExclusiveGateway_1fyr1ww" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">N</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Reject}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1tjxp6u" sourceRef="Task_0ilgnyt" targetRef="Task_0joe8qi" />
     <bpmn:sequenceFlow id="SequenceFlow_1cqvwqs" name="alternative" sourceRef="ExclusiveGateway_03kmw3c" targetRef="Task_03344ln">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">A</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Alternative}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_1xqt5co" name="no" sourceRef="ExclusiveGateway_03kmw3c" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">N</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Reject}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0f78xlk" sourceRef="Task_15du57k" targetRef="ExclusiveGateway_03kmw3c" />
     <bpmn:sequenceFlow id="SequenceFlow_0zohnex" name="yes" sourceRef="ExclusiveGateway_03kmw3c" targetRef="Task_0ilgnyt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Y</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${Accept}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="ExclusiveGateway_1dlu4q2" name="Assesssment result?">
       <bpmn:incoming>SequenceFlow_0vb90go</bpmn:incoming>
