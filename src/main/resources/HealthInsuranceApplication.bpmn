@@ -137,11 +137,6 @@
       <bpmn:outgoing>SequenceFlow_0787jw0</bpmn:outgoing>
       <bpmn:outgoing>SequenceFlow_0jo5p54</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:subProcess id="Task_03344ln" name="Negotiate new offers">
-      <bpmn:incoming>SequenceFlow_19mmeg0</bpmn:incoming>
-      <bpmn:incoming>SequenceFlow_1cqvwqs</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0et8xrj</bpmn:outgoing>
-    </bpmn:subProcess>
     <bpmn:startEvent id="StartEvent_1" camunda:formKey="embedded:app:forms/createInsurance.html">
       <bpmn:outgoing>SequenceFlow_1jwi8sl</bpmn:outgoing>
       <bpmn:messageEventDefinition messageRef="Message_0dshzfk" />
@@ -155,6 +150,11 @@
       <bpmn:incoming>SequenceFlow_0338jur</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0f78xlk</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:callActivity id="Task_03344ln" name="Negotiate new offers" camunda:caseRef="Case_NegotiateNewOffers">
+      <bpmn:incoming>SequenceFlow_19mmeg0</bpmn:incoming>
+      <bpmn:incoming>SequenceFlow_1cqvwqs</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0et8xrj</bpmn:outgoing>
+    </bpmn:callActivity>
   </bpmn:process>
   <bpmn:process id="Process_091g9qa" isExecutable="false" />
   <bpmn:message id="Message_0dshzfk" name="Message_2hhn1i9" />
@@ -253,9 +253,6 @@
           <dc:Bounds x="1419.203858948407" y="577.3098188453064" width="18" height="12" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="SubProcess_00quj43_di" bpmnElement="Task_03344ln">
-        <dc:Bounds x="1128" y="573" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_19mmeg0_di" bpmnElement="SequenceFlow_19mmeg0">
         <di:waypoint xsi:type="dc:Point" x="830" y="285" />
         <di:waypoint xsi:type="dc:Point" x="830" y="613" />
@@ -376,7 +373,7 @@
         <di:waypoint xsi:type="dc:Point" x="1178" y="285" />
         <di:waypoint xsi:type="dc:Point" x="1178" y="573" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1109" y="391.7731958762887" width="51" height="12" />
+          <dc:Bounds x="1109" y="392" width="51" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1xqt5co_di" bpmnElement="SequenceFlow_1xqt5co">
@@ -437,6 +434,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="UserTask_1chjdn4_di" bpmnElement="Task_15du57k">
         <dc:Bounds x="1024" y="220" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CallActivity_10bt81m_di" bpmnElement="Task_03344ln">
+        <dc:Bounds x="1128" y="573" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
