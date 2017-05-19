@@ -5,14 +5,14 @@ import org.camunda.bpm.engine.delegate.JavaDelegate;
 
 import javax.inject.Named;
 
-@Named("tweetAdapter")
+@Named("dataPreparationAdapter")
 public class TweetContentOfflineDelegate implements JavaDelegate {
 
   public void execute(DelegateExecution execution) throws Exception {
-    String content = (String) execution.getVariable("content");
+    String content = (String) execution.getVariable("requesterName");
 
     System.out.println("\n\n\n######\n\n\n");
-    System.out.println("NOW WE WOULD TWITTER: '" + content + "'");
+    System.out.println("NAME IS: '" + content + "'");
     System.out.println("\n\n\n######\n\n\n");
   }
 
