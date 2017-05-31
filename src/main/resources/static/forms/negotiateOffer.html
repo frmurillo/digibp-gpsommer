@@ -1,0 +1,42 @@
+<strong>Negotiate Offer</strong>
+
+<form role="form" class="form-horizontal" name="variablesForm">
+  <input type="hidden"
+         cam-variable-name="possibleHealthIssues"
+         cam-variable-type="String"
+         name="possibleHealthIssues"
+         ng-change="setPossibleHealthIssues()"/>
+  <input type="hidden"
+         cam-variable-name="possibleRiskDrivers"
+         cam-variable-type="String"
+         name="possibleRiskDrivers"
+         ng-change="setPossibleRiskDrivers()"/>
+  <div class="control-group">
+    <label class="control-label">Possible Health Issues:</label>
+    <p>{{possibleHealthIssues}}</p>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Possible Risk Drivers:</label>
+    <p>{{possibleRiskDrivers}}</p>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Exclude Risk Drivers (separated by ";")</label>
+    <textarea cam-variable-name="excludedRiskDrivers"
+              cam-variable-type="String">
+    </textarea>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Exclude Health Issues (separated by ";")</label>
+    <textarea cam-variable-name="excludedHealthIssues"
+              cam-variable-type="String">
+    </textarea>
+  </div>
+  <script cam-script type="text/form-script">
+  $scope.setPossibleHealthIssues = function() {
+    var possibleHealthIssues = $scope.variablesForm.possibleHealthIssues.$modelValue;
+  }
+  $scope.setPossibleRiskDrivers = function() {
+    var possibleRiskDrivers = $scope.variablesForm.possibleRiskDrivers.$modelValue;
+  }
+  </script>
+</form>

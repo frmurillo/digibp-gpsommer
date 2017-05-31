@@ -1,0 +1,26 @@
+<strong>Define Risk Drivers</strong>
+
+<form role="form" class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">Possible Health Issues</label>
+    <textarea cam-variable-name="possibleHealthIssues"
+              cam-variable-type="String">
+    </textarea>
+  </div>
+  <a onClick="manualStartTask(); return false;">test REST</a>
+  <script>
+    function manualStartTask() {
+      window.alert('Test');
+      // write JSON object
+      //var jsonString = {
+      //    "id": "PI_contactRequester"
+      //};
+      //JSON.stringify(jsonString);
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "http://localhost:8080/engine/default/case-execution/PI_consultDoctor/manual-start", false);
+      xhttp.setRequestHeader("Content-type", "application/json");
+      xhttp.send();
+      //JSON.parse(xhttp.responseText);
+    }
+  </script>
+</form>
