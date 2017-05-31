@@ -7,7 +7,31 @@
               cam-variable-type="String">
     </textarea>
   </div>
-  <a onClick="manualStartTask(); return false;">test REST</a>
+  <button ng-click="manualStartDoctor()">test REST</button>
+  <script cam-script type="text/form-script">
+    $scope.manualStartDoctor = function() {
+
+    var serverName = location.origin;
+    var taskActivityIdDoc = "piConsultDoctor";
+
+    var reqTask = new XMLHttpRequest();
+    reqTask.open("GET", serverName+"/rest/task/"+camForm.taskId, false);
+    reqTask.setRequestHeader("Content-type", "application/json");
+    reqTask.send();
+    var activeTask = JSON.parse(reqTask.responseText);
+
+    var reqTaskToStart = new XMLHttpRequest();
+    reqTaskToStart.open("GET", serverName+"/rest/case-execution?activityId="+taskActivityIdDoc+"&caseInstanceId="+activeTask.caseInstanceId, false);
+    reqTaskToStart.setRequestHeader("Content-type", "application/json");
+    reqTaskToStart.send();
+    var taskToStart = JSON.parse(reqTaskToStart.responseText);
+
+    var startTask = new XMLHttpRequest();
+    startTask.open("POST", serverName+"/rest/case-execution/"+taskToStart[0].id+"/manual-start", true);
+    startTask.setRequestHeader("Content-type", "application/json");
+    startTask.send("{}");
+    }
+  </script>
   <script>
     function manualStartTask() {
       window.alert('Test');
@@ -17,7 +41,7 @@
       //};
       //JSON.stringify(jsonString);
       var xhttp = new XMLHttpRequest();
-      xhttp.open("POST", "http://localhost:8080/engine/default/case-execution/PI_consultDoctor/manual-start", false);
+      xhttp.open("POST", "http://localhost:8080/engine-rest/engine/default/case-execution/PI_consultDoctor/manual-start", false);
       xhttp.setRequestHeader("Content-type", "application/json");
       xhttp.send();
       //JSON.parse(xhttp.responseText);
