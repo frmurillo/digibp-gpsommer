@@ -1,4 +1,4 @@
-package ch.fhnw.digibp.gpsommer.example.twitter;
+package ch.fhnw.digibp.gpsommer.implementation;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
@@ -12,17 +12,21 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Named("dataPreparationAdapter")
-public class TweetContentOfflineDelegate implements JavaDelegate {
+public class DataPreparation implements JavaDelegate {
 
   public void execute(DelegateExecution execution) throws Exception {
     Integer height = (Integer) execution.getVariable("requesterHeight");
     Integer weight = (Integer) execution.getVariable("requesterWeight");
     String dateOfBirthString = (String) execution.getVariable("dateOfBirth");
+    String gender = (String) execution.getVariable("requesterGender");
+
     Double bmi = calculateBMI(height, weight);
     Integer age = calculateAge(dateOfBirthString);
+    String salutation = getSalutation(gender);
 
     execution.setVariable("bmi",bmi);
     execution.setVariable("age",age);
+    execution.setVariable("salutation",salutation);
 
     Context.getCommandContext().getProcessEngineConfiguration().getProcessEngine().getCaseService().manuallyStartCaseExecution("PlanItem_1ba2n47");
 
@@ -30,6 +34,18 @@ public class TweetContentOfflineDelegate implements JavaDelegate {
     System.out.println("AGE IS: '" + (Integer) execution.getVariable("age") + "'");
     System.out.println("BMI IS: '" + (Double) execution.getVariable("bmi") + "'");
     System.out.println("\n\n\n######\n\n\n");
+  }
+
+  private String getSalutation(String gender){
+    String salutation = "Mr. / Mrs.";
+
+    if (gender == "male"){
+      salutation = "Mr.";
+    } else if (gender == "female"){
+      salutation = "Mrs.";
+    }
+
+    return salutation;
   }
 
   private Integer calculateAge(String birthDay){

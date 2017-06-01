@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_0vidlpq" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="CalculatePremium" name="Calculate Premium">
+    <extensionElements>
+      <biodi:bounds x="468" y="117" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable" hitPolicy="COLLECT" aggregation="SUM">
+      <input id="input1" label="Age" camunda:inputVariable="">
+        <inputExpression id="inputExpression1" typeRef="integer">        <text>age</text>
+</inputExpression>
+      </input>
+      <input id="InputClause_0fsrz74" label="Smoking packs/year" camunda:inputVariable="">
+        <inputExpression id="LiteralExpression_0bfddjq" typeRef="integer">        <text>smokingPerYear</text>
+</inputExpression>
+      </input>
+      <output id="output1" label="Premium" name="premium" typeRef="integer" />
+      <rule id="row-869084407-24">
+        <inputEntry id="UnaryTests_1mo7cxt">        <text><![CDATA[>= 60]]></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_10uhmw7">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1x7wc2k">        <text>10</text>
+</outputEntry>
+      </rule>
+      <rule id="row-869084407-25">
+        <inputEntry id="UnaryTests_09d4199">        <text>]45..60[</text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0n1do9k">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0fm3i4m">        <text>5</text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-3">
+        <inputEntry id="UnaryTests_1cefvio">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_14g9t9h">        <text><![CDATA[>= 200]]></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1qqnvn4">        <text>10</text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-4">
+        <inputEntry id="UnaryTests_04crk3e">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0rqb7ku">        <text>]100..200[</text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_1d0w81j">        <text>5</text>
+</outputEntry>
+      </rule>
+      <rule id="row-30513466-7">
+        <inputEntry id="UnaryTests_1gxrggj">        <text></text>
+</inputEntry>
+        <inputEntry id="UnaryTests_0k0ux29">        <text></text>
+</inputEntry>
+        <outputEntry id="LiteralExpression_0libvss">        <text>500</text>
+</outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
