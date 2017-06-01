@@ -18,11 +18,19 @@
     />
   </div>
   <div class="control-group">
+    <label class="control-label">Email</label>
+    <input type="email" class="form-control"
+           cam-variable-name="requesterEmail"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <div class="control-group">
     <label class="control-label">Phone</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterPhone"
            cam-variable-type="String"
-           readonly
+           ng-pattern="/^[0-9 ]*$/"
     />
   </div>
   <div class="control-group">
@@ -44,6 +52,7 @@
     <input type="text" class="form-control"
            cam-variable-name="treatingDoctorMail"
            cam-variable-type="String"
+           ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
     />
   </div>
   <div class="control-group">
@@ -51,6 +60,7 @@
     <input type="text" class="form-control"
            cam-variable-name="treatingDoctorPhone"
            cam-variable-type="String"
+           ng-pattern="/^[0-9 ]*$/"
     />
   </div>
   <div class="control-group">

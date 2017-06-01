@@ -31,12 +31,21 @@
               cam-variable-type="String">
     </textarea>
   </div>
+  <div class="control-group">
+    <label class="control-label">Create a Contract?</label>
+    <select cam-variable-name="negotiationSuccess"
+            cam-variable-type="String"
+            required>
+      <option value="Reject">Reject</option>
+      <option value="Accept">Accept</option>
+    </select>
+  </div>
   <script cam-script type="text/form-script">
-  $scope.setPossibleHealthIssues = function() {
-    var possibleHealthIssues = $scope.variablesForm.possibleHealthIssues.$modelValue;
-  }
-  $scope.setPossibleRiskDrivers = function() {
-    var possibleRiskDrivers = $scope.variablesForm.possibleRiskDrivers.$modelValue;
-  }
+    $scope.setPossibleHealthIssues = function() {
+      var possibleHealthIssues = $scope.variablesForm.possibleHealthIssues.$modelValue;
+    }
+    $scope.setPossibleRiskDrivers = function() {
+      var possibleRiskDrivers = $scope.variablesForm.possibleRiskDrivers.$modelValue;
+    }
   </script>
 </form>

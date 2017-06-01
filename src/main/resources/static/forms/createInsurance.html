@@ -1,7 +1,7 @@
 <strong>Create Insurance</strong>
 <form role="form" class="form-horizontal" name="variablesForm">
   <div class="control-group">
-    <label class="control-label" for="requesterNameId">Name</label>
+    <label class="control-label" for="requesterNameId">Name*</label>
     <input id="requesterNameId" type="text" class="form-control"
            cam-variable-name="requesterName"
            cam-variable-type="String"
@@ -9,7 +9,7 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Surname</label>
+    <label class="control-label">Surname*</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterSurname"
            cam-variable-type="String"
@@ -17,7 +17,7 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Date of Birth (MM/dd/yyyy)</label>
+    <label class="control-label">Date of Birth (MM/dd/yyyy)*</label>
     <div class="controls">
       <input type="text"
              name="dateOfBirth"
@@ -60,7 +60,7 @@
     </span>
   </div>
   <div class="control-group">
-    <label class="control-label">Gender</label>
+    <label class="control-label">Gender*</label>
     <select cam-variable-name="requesterGender"
             cam-variable-type="String"
             required>
@@ -69,7 +69,7 @@
     </select>
   </div>
   <div class="control-group">
-    <label class="control-label">Address</label>
+    <label class="control-label">Address*</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterAddress"
            cam-variable-type="String"
@@ -77,7 +77,7 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Zip/City</label>
+    <label class="control-label">Zip/City*</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterCity"
            cam-variable-type="String"
@@ -85,25 +85,25 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Phone</label>
+    <label class="control-label">Phone*</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterPhone"
            cam-variable-type="String"
-           ng-pattern="/[0-9]/"
+           ng-pattern="/^[0-9 ]*$/"
            required
     />
   </div>
   <div class="control-group">
-  <label class="control-label">Email</label>
-  <input type="email" class="form-control"
-         cam-variable-name="requesterEmail"
-         cam-variable-type="String"
-         ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
-         required
-  />
+    <label class="control-label">Email*</label>
+    <input type="email" class="form-control"
+           cam-variable-name="requesterEmail"
+           cam-variable-type="String"
+           ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
+           required
+    />
   </div>
   <div class="control-group">
-    <label class="control-label">Height (cm)</label>
+    <label class="control-label">Height (cm)*</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterHeight"
            cam-variable-type="Integer"
@@ -111,7 +111,7 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label"> (Kg)</label>
+    <label class="control-label">Weight (Kg)*</label>
     <input type="text" class="form-control"
            cam-variable-name="requesterWeight"
            cam-variable-type="Integer"
@@ -119,7 +119,7 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Smoking packets per Year</label>
+    <label class="control-label">Smoking packets per Year*</label>
     <input type="text" class="form-control"
            cam-variable-name="smokingPerYear"
            cam-variable-type="Integer"
@@ -127,7 +127,7 @@
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Working ability status</label>
+    <label class="control-label">Working ability status*</label>
     <select cam-variable-name="requesterWorkingAbility"
             cam-variable-type="String"
             required>
@@ -137,21 +137,21 @@
     </select>
   </div>
   <div class="control-group">
-    <label class="control-label">Under Medication</label>
+    <label class="control-label">Under Medication*</label>
     <input type="checkbox" class="form-control"
            cam-variable-name="medicationStatus"
            cam-variable-type="Boolean"
     />
   </div>
   <div class="control-group">
-    <label class="control-label">During Healing</label>
+    <label class="control-label">During Healing*</label>
     <input type="checkbox" class="form-control"
            cam-variable-name="healingStatus"
            cam-variable-type="Boolean"
     />
   </div>
   <div class="control-group">
-    <label class="control-label">Number of travels per year</label>
+    <label class="control-label">Number of travels per year*</label>
     <input type="text" class="form-control"
            cam-variable-name="travelPerYear"
            cam-variable-type="Integer"
@@ -177,12 +177,14 @@
     <input type="text" class="form-control"
            cam-variable-name="treatingDoctorMail"
            cam-variable-type="String"
+           ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
     />
   </div><div class="control-group">
     <label class="control-label">Treating doctor Phone</label>
     <input type="text" class="form-control"
            cam-variable-name="treatingDoctorPhone"
            cam-variable-type="String"
+           ng-pattern="/^[0-9 ]*$/"
     />
   </div>
   <div class="control-group">

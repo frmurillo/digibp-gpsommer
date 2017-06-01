@@ -13,6 +13,7 @@
     <input type="text" class="form-control"
            cam-variable-name="treatingDoctorMail"
            cam-variable-type="String"
+           ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
     />
   </div>
   <div class="control-group">
@@ -20,6 +21,7 @@
     <input type="text" class="form-control"
            cam-variable-name="treatingDoctorPhone"
            cam-variable-type="String"
+           ng-pattern="/^[0-9 ]*$/"
     />
   </div>
   <div class="control-group">

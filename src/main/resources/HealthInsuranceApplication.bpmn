@@ -35,10 +35,10 @@
     <bpmn:sequenceFlow id="SequenceFlow_0338jur" sourceRef="Task_088z8ce" targetRef="Task_15du57k" />
     <bpmn:sequenceFlow id="SequenceFlow_1snigku" sourceRef="StartEvent_1" targetRef="Task_1w8q8r9" />
     <bpmn:sequenceFlow id="SequenceFlow_0jo5p54" name="no" sourceRef="ExclusiveGateway_1fyr1ww" targetRef="Task_0d9a8jx">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Reject'}]]></bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${negotiationSuccess == 'Reject'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0787jw0" name="Yes" sourceRef="ExclusiveGateway_1fyr1ww" targetRef="Task_0ilgnyt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${confirmAssessment == 'Accept'}]]></bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"><![CDATA[${negotiationSuccess == 'Accept'}]]></bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0et8xrj" sourceRef="Task_03344ln" targetRef="ExclusiveGateway_1fyr1ww" />
     <bpmn:sequenceFlow id="SequenceFlow_1tjxp6u" sourceRef="Task_0ilgnyt" targetRef="Task_0joe8qi" />
@@ -68,6 +68,10 @@
     <bpmn:sequenceFlow id="SequenceFlow_0vb90go" sourceRef="BusinessRuleTask_0dx6k5x" targetRef="ExclusiveGateway_1dlu4q2" />
     <bpmn:sequenceFlow id="SequenceFlow_1z0xlg7" sourceRef="Task_1bt63mh" targetRef="BusinessRuleTask_0dx6k5x" />
     <bpmn:callActivity id="Task_03344ln" name="Negotiate new offers" camunda:caseRef="Case_NegotiateNewOffers">
+      <bpmn:extensionElements>
+        <camunda:in variables="all" />
+        <camunda:out variables="all" />
+      </bpmn:extensionElements>
       <bpmn:incoming>SequenceFlow_19mmeg0</bpmn:incoming>
       <bpmn:incoming>SequenceFlow_1cqvwqs</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0et8xrj</bpmn:outgoing>

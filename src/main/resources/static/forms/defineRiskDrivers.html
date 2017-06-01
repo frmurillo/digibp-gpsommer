@@ -2,9 +2,167 @@
 
 <form role="form" class="form-horizontal">
   <div class="control-group">
+    <label class="control-label">Smoking packets per Year</label>
+    <input type="text" class="form-control"
+           cam-variable-name="smokingPerYear"
+           cam-variable-type="Integer"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Number of travels per year</label>
+    <input type="text" class="form-control"
+           cam-variable-name="travelPerYear"
+           cam-variable-type="Integer"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Job</label>
+    <input type="text" class="form-control"
+           cam-variable-name="requesterJob"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Working ability status</label>
+    <select cam-variable-name="requesterWorkingAbility"
+            cam-variable-type="String"
+            disabled>
+      <option value="able">Able to work</option>
+      <option value="unable">Unable to Work</option>
+      <option value="partially">Partially able to Work</option>
+    </select>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Kind of health disorder (if existing)</label>
+    <input type="text" class="form-control"
+           cam-variable-name="healthDisorder"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Cause of disorder (if existing)</label>
+    <input type="text" class="form-control"
+           cam-variable-name="causeOfDisorder"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">During Healing</label>
+    <input type="checkbox" class="form-control"
+           cam-variable-name="healingStatus"
+           cam-variable-type="Boolean"
+           disabled
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Under Medication</label>
+    <input type="checkbox" class="form-control"
+           cam-variable-name="medicationStatus"
+           cam-variable-type="Boolean"
+           disabled
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Kind of medication (if existing)</label>
+    <input type="text" class="form-control"
+           cam-variable-name="kindOfMedication"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <input type="hidden"
+         cam-variable-name="notesForRequester"
+         cam-variable-type="String"
+         name="notesForRequester"
+         ng-change="setRequesterNotes()"/>
+  <input type="hidden"
+         cam-variable-name="notesForDoctor"
+         cam-variable-type="String"
+         name="notesForDoctor"
+         ng-change="setDoctorNotes()"/>
+  <input type="hidden"
+         cam-variable-name="treatingDoctor"
+         cam-variable-type="String"
+         name="treatingDoctor"
+         ng-change="setTreatingDoctor()"/>
+  <input type="hidden"
+         cam-variable-name="treatingDoctorMail"
+         cam-variable-type="String"
+         name="treatingDoctorMail"
+         ng-change="setTreatingDoctorMail()"/>
+  <input type="hidden"
+         cam-variable-name="treatingDoctorPhone"
+         cam-variable-type="String"
+         name="treatingDoctorPhone"
+         ng-change="setTreatingDoctorPhone()"/>
+  <div class="control-group">
+    <label class="control-label">Notes about Requester:</label>
+    <p>{{notesForRequester}}</p>
+  </div>
+  <div class="control-group">
+    <label class="control-label">Notes from Doctor:</label>
+    <p>{{notesForDoctor}}</p>
+  </div>
+  <div class="control-group">
     <label class="control-label">Possible Risk Drivers</label>
     <textarea cam-variable-name="possibleRiskDrivers"
               cam-variable-type="String">
     </textarea>
   </div>
+  <button ng-disabled="setDocButtonDisabled()" ng-click="manualStartDoctor()">Consult Doctor</button>
+  <button ng-click="manualStartRequester()">Contact Requester</button>
+  <script cam-script type="text/form-script">
+        $scope.setDocButtonDisabled = function() {
+            if ($scope.variablesForm.treatingDoctor.$modelValue!=null &&
+                ($scope.variablesForm.treatingDoctorMail.$modelValue!=null ||
+                $scope.variablesForm.treatingDoctorPhone.$modelValue!=null)){
+
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+
+        $scope.setRequesterNotes = function() {
+          var notesForRequester = $scope.variablesForm.notesForRequester.$modelValue;
+        }
+        $scope.setDoctorNotes = function() {
+          var notesForDoctor = $scope.variablesForm.notesForDoctor.$modelValue;
+        }
+
+        $scope.manualStartDoctor = function(){
+            manualStartTask("piConsultDoctor");
+        }
+
+        $scope.manualStartRequester = function(){
+            manualStartTask("piContactRequester");
+        }
+
+        function manualStartTask(taskActivityIdDoc) {
+            var serverName = location.origin;
+
+            var reqTask = new XMLHttpRequest();
+            reqTask.open("GET", serverName+"/rest/task/"+camForm.taskId, false);
+            reqTask.setRequestHeader("Content-type", "application/json");
+            reqTask.send();
+            var activeTask = JSON.parse(reqTask.responseText);
+
+            var reqTaskToStart = new XMLHttpRequest();
+            reqTaskToStart.open("GET", serverName+"/rest/case-execution?activityId="+taskActivityIdDoc+"&caseInstanceId="+activeTask.caseInstanceId, false);
+            reqTaskToStart.setRequestHeader("Content-type", "application/json");
+            reqTaskToStart.send();
+            var taskToStart = JSON.parse(reqTaskToStart.responseText);
+
+            var startTask = new XMLHttpRequest();
+            startTask.open("POST", serverName+"/rest/case-execution/"+taskToStart[0].id+"/manual-start", true);
+            startTask.setRequestHeader("Content-type", "application/json");
+            startTask.send("{}");
+        }
+    </script>
 </form>
