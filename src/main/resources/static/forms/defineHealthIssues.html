@@ -88,18 +88,15 @@
     <input type="hidden"
            cam-variable-name="treatingDoctor"
            cam-variable-type="String"
-           name="treatingDoctor"
-           ng-change="setTreatingDoctor()"/>
+           name="treatingDoctor"/>
     <input type="hidden"
            cam-variable-name="treatingDoctorMail"
            cam-variable-type="String"
-           name="treatingDoctorMail"
-           ng-change="setTreatingDoctorMail()"/>
+           name="treatingDoctorMail"/>
     <input type="hidden"
            cam-variable-name="treatingDoctorPhone"
            cam-variable-type="String"
-           name="treatingDoctorPhone"
-           ng-change="setTreatingDoctorPhone()"/>
+           name="treatingDoctorPhone"/>
     <div class="control-group">
         <label class="control-label">Notes about Requester:</label>
         <p>{{notesForRequester}}</p>
@@ -111,8 +108,7 @@
     <div class="control-group">
         <label class="control-label">Possible Health Issues</label>
         <textarea cam-variable-name="possibleHealthIssues"
-                  cam-variable-type="String">
-        </textarea>
+                  cam-variable-type="String"></textarea>
     </div>
     <button ng-disabled="setDocButtonDisabled()" ng-click="manualStartDoctor()">Consult Doctor</button>
     <button ng-click="manualStartRequester()">Contact Requester</button>
@@ -121,12 +117,10 @@
             if ($scope.variablesForm.treatingDoctor.$modelValue!=null &&
                 ($scope.variablesForm.treatingDoctorMail.$modelValue!=null ||
                 $scope.variablesForm.treatingDoctorPhone.$modelValue!=null)){
-
                 return false;
             } else {
                 return true;
             }
-
         }
 
         $scope.setRequesterNotes = function() {

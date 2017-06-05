@@ -3,6 +3,8 @@ camunda:
     admin-user:
       id: demo
       password: demo
+    filter:
+      create: defaultFilter
 
 # This is for using a file-based DB
 # In this case the Camunda data/configuration will persist

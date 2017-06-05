@@ -2,14 +2,10 @@ package ch.fhnw.digibp.gpsommer.implementation;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.camunda.bpm.engine.impl.context.Context;
-import sun.awt.KeyboardFocusManagerPeerImpl;
 
 import javax.inject.Named;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
 @Named("dataPreparationAdapter")
 public class DataPreparation implements JavaDelegate {
@@ -23,25 +19,26 @@ public class DataPreparation implements JavaDelegate {
     Double bmi = calculateBMI(height, weight);
     Integer age = calculateAge(dateOfBirthString);
     String salutation = getSalutation(gender);
+    String businessKey = execution.getProcessBusinessKey();
 
     execution.setVariable("bmi",bmi);
     execution.setVariable("age",age);
     execution.setVariable("salutation",salutation);
-
-    Context.getCommandContext().getProcessEngineConfiguration().getProcessEngine().getCaseService().manuallyStartCaseExecution("PlanItem_1ba2n47");
+    execution.setVariable("businessKey",businessKey);
 
     System.out.println("\n\n\n######\n\n\n");
     System.out.println("AGE IS: '" + (Integer) execution.getVariable("age") + "'");
     System.out.println("BMI IS: '" + (Double) execution.getVariable("bmi") + "'");
+    System.out.println("businessKey: '" + (String) execution.getVariable("businessKey") + "'");
     System.out.println("\n\n\n######\n\n\n");
   }
 
   private String getSalutation(String gender){
     String salutation = "Mr. / Mrs.";
 
-    if (gender == "male"){
+    if (gender.compareTo("male") == 0){
       salutation = "Mr.";
-    } else if (gender == "female"){
+    } else if (gender.compareTo("female") == 0){
       salutation = "Mrs.";
     }
 

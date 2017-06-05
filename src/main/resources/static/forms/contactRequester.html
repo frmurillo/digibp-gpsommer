@@ -1,6 +1,6 @@
 <strong>Define Risk Drivers</strong>
 
-<form role="form" class="form-horizontal">
+<form role="form" class="form-horizontal" name="variablesForm">
   <div class="control-group">
     <label class="control-label" for="requesterNameId">Name</label>
     <input id="requesterNameId" type="text" class="form-control"
@@ -21,6 +21,7 @@
     <label class="control-label">Email</label>
     <input type="email" class="form-control"
            cam-variable-name="requesterEmail"
+           name="requesterEmail"
            cam-variable-type="String"
            readonly
     />
@@ -87,7 +88,41 @@
   <div class="control-group">
     <label class="control-label">Notes</label>
     <textarea cam-variable-name="notesForRequester"
-              cam-variable-type="String">
-    </textarea>
+              cam-variable-type="String"></textarea>
   </div>
+  <button ng-disabled="setButtonDisabled()" ng-click="manualStartSendMail()">Send Mail</button>
+  <script cam-script type="text/form-script">
+      $scope.setButtonDisabled = function() {
+          if ($scope.variablesForm.requesterEmail.$modelValue!=null){
+              return false;
+          } else {
+              return true;
+          }
+      }
+
+      $scope.manualStartSendMail = function(){
+          manualStartTask("PI_SendMailRequester");
+      }
+
+      function manualStartTask(taskActivityIdDoc) {
+          var serverName = location.origin;
+
+          var reqTask = new XMLHttpRequest();
+          reqTask.open("GET", serverName+"/rest/task/"+camForm.taskId, false);
+          reqTask.setRequestHeader("Content-type", "application/json");
+          reqTask.send();
+          var activeTask = JSON.parse(reqTask.responseText);
+
+          var reqTaskToStart = new XMLHttpRequest();
+          reqTaskToStart.open("GET", serverName+"/rest/case-execution?activityId="+taskActivityIdDoc+"&caseInstanceId="+activeTask.caseInstanceId, false);
+          reqTaskToStart.setRequestHeader("Content-type", "application/json");
+          reqTaskToStart.send();
+          var taskToStart = JSON.parse(reqTaskToStart.responseText);
+
+          var startTask = new XMLHttpRequest();
+          startTask.open("POST", serverName+"/rest/case-execution/"+taskToStart[0].id+"/manual-start", true);
+          startTask.setRequestHeader("Content-type", "application/json");
+          startTask.send("{}");
+      }
+  </script>
 </form>

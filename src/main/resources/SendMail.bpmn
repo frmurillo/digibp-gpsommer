@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.7.1">
+  <bpmn:collaboration id="Collaboration_07yswwr">
+    <bpmn:participant id="Participant_10sc3zg" name="Send Mail" processRef="Send_Mail" />
+  </bpmn:collaboration>
+  <bpmn:process id="Send_Mail" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="mailAddress" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>SequenceFlow_0ng3en1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0ng3en1" sourceRef="StartEvent_1" targetRef="Task_1w4dk0n" />
+    <bpmn:sequenceFlow id="SequenceFlow_0qjowly" sourceRef="Task_02jhfbw" targetRef="EndEvent_1dg8enf" />
+    <bpmn:endEvent id="EndEvent_1dg8enf">
+      <bpmn:incoming>SequenceFlow_0qjowly</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="Task_02jhfbw" name="Send mail">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url"><![CDATA[https://prod-25.westeurope.logic.azure.com:443/workflows/9744fce69b344369837384b8213d785f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=CJmCA7l6LIF7aIZw0eBGNxJM0m8hWDCbkXtbx0NwD40]]></camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">
+              <camunda:script scriptFormat="JavaScript"><![CDATA[// get workflow variable
+var name = execution.getVariable("requesterName");
+var surname = execution.getVariable("requesterSurname");
+var email = execution.getVariable("mailAddress");
+var subject= execution.getVariable("mailSubject");
+var body= execution.getVariable("mailText");
+
+// write JSON object
+var jsonString = {
+"firstName": name,
+"secondName": surname,
+"email": email,
+"subject": subject,
+"body": body
+};
+
+// return a JSON string
+JSON.stringify(jsonString);]]></camunda:script>
+            </camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_1j2fxqf</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0qjowly</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1j2fxqf" sourceRef="Task_1w4dk0n" targetRef="Task_02jhfbw" />
+    <bpmn:userTask id="Task_1w4dk0n" name="Write mail" camunda:formKey="embedded:app:forms/sendMail.html" camunda:assignee="demo">
+      <bpmn:incoming>SequenceFlow_0ng3en1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_1j2fxqf</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_07yswwr">
+      <bpmndi:BPMNShape id="Participant_10sc3zg_di" bpmnElement="Participant_10sc3zg">
+        <dc:Bounds x="123" y="82" width="600" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="193" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="155" y="229" width="90" height="20" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ng3en1_di" bpmnElement="SequenceFlow_0ng3en1">
+        <di:waypoint xsi:type="dc:Point" x="218" y="211" />
+        <di:waypoint xsi:type="dc:Point" x="299" y="211" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="213.5" y="189.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1dg8enf_di" bpmnElement="EndEvent_1dg8enf">
+        <dc:Bounds x="615" y="193" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="588" y="232" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qjowly_di" bpmnElement="SequenceFlow_0qjowly">
+        <di:waypoint xsi:type="dc:Point" x="565" y="211" />
+        <di:waypoint xsi:type="dc:Point" x="615" y="211" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="545" y="189.5" width="90" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0k0bc17_di" bpmnElement="Task_02jhfbw">
+        <dc:Bounds x="465" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1j2fxqf_di" bpmnElement="SequenceFlow_1j2fxqf">
+        <di:waypoint xsi:type="dc:Point" x="399" y="211" />
+        <di:waypoint xsi:type="dc:Point" x="465" y="211" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="432" y="189.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1nuq89r_di" bpmnElement="Task_1w4dk0n">
+        <dc:Bounds x="299" y="171" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

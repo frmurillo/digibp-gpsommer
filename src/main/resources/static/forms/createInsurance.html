@@ -35,7 +35,8 @@
 
         // value must be a valid date
         var date = new Date(value);
-        if (!isNaN(date.valueOf())) {
+        var dateNow = new Date();
+        if (!isNaN(date.valueOf()) && date<dateNow) {
           formField.$setValidity('dateOfBirthValidity', true);
         } else {
           formField.$setValidity('dateOfBirthValidity', false);
@@ -98,6 +99,7 @@
     <input type="email" class="form-control"
            cam-variable-name="requesterEmail"
            cam-variable-type="String"
+           name="requesterEmail"
            ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
            required
     />
@@ -208,4 +210,20 @@
            cam-variable-type="String"
     />
   </div>
+  <script cam-script type="text/form-script">
+    camForm.on('submit', function() {
+      var requesterEmail = $scope.variablesForm.requesterEmail.$modelValue;
+
+      var businessKey = requesterEmail + '_' + Date();
+      camForm.businessKey = businessKey;
+
+      var variableManager = camForm.variableManager
+      variableManager.createVariable({
+        name: 'serverLocation',
+        type: 'String',
+        value: location.origin,
+        isDirty: true
+      });
+    });
+  </script>
 </form>

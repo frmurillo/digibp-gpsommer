@@ -1,0 +1,44 @@
+<strong>Define Risk Drivers</strong>
+
+<form role="form" class="form-horizontal" name="variablesForm">
+  <div class="control-group">
+    <label class="control-label" for="requesterNameId">Requester Name</label>
+    <input id="requesterNameId" type="text" class="form-control"
+           cam-variable-name="requesterName"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Requester Surname</label>
+    <input type="text" class="form-control"
+           cam-variable-name="requesterSurname"
+           cam-variable-type="String"
+           readonly
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">E-Mail address*</label>
+    <input type="text" class="form-control"
+           cam-variable-name="mailAddress"
+           cam-variable-type="String"
+           ng-pattern="/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/"
+           required
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Subject*</label>
+    <input type="text" class="form-control"
+           cam-variable-name="mailSubject"
+           cam-variable-type="String"
+           required
+    />
+  </div>
+  <div class="control-group">
+    <label class="control-label">Text*</label>
+    <textarea cam-variable-name="mailText"
+              cam-variable-type="String"
+              required>
+    </textarea>
+  </div>
+</form>
