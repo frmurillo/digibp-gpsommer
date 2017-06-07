@@ -86,7 +86,7 @@ var surname = execution.getVariable("requesterSurname");
 var email = execution.getVariable("requesterEmail");
 var salutation= execution.getVariable("salutation");
 
-var body = "Dear " + salutation + " " + name + " " + surname + "\nPlease sign the attached contract.";
+var body = "Dear " + salutation + " " + name + " " + surname + "\nPlease sign the attached contract and send it to contract-gpsommerfhnw@outlook.com with the subject "Contract to be signed".\nBest Regards,\nGP-Sommer";
 
 // write JSON object
 var jsonString = {
@@ -105,7 +105,7 @@ JSON.stringify(jsonString);]]></camunda:script>
       <bpmn:incoming>SequenceFlow_1tjxp6u</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0rl13a3</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_0ms9aim" name="Wait for Contract">
+    <bpmn:serviceTask id="Task_0ms9aim" name="Wait for contract">
       <bpmn:extensionElements>
         <camunda:connector>
           <camunda:inputOutput>
@@ -277,7 +277,7 @@ var salutation= execution.getVariable("salutation");
 
 var subject= "Rejected Healthinsurance Application";
 
-var body="Dear " + salutation + " " + name + " " + surname + "\nWe must inform you, that we could not accept your application for a health insurance.\n Best Regards,\nGP-Sommer";
+var body="Dear " + salutation + " " + name + " " + surname + "\nWe must inform you, that we could not accept your application for a health insurance.\nBest Regards,\nGP-Sommer";
 
 // write JSON object
 var jsonString = {
@@ -323,7 +323,7 @@ var address= execution.getVariable("requesterAddress");
 var city = execution.getVariable("requesterCity");
 var salutation= execution.getVariable("salutation");
 var premium= execution.getVariable("premium");
-var excludedRiskDrivers = execution.getVariable("excludedRiskDrivers ");
+var excludedRiskDrivers = execution.getVariable("excludedRiskDrivers");
 var excludedHealthIssues= execution.getVariable("excludedHealthIssues");
 
 var splittedRisks;
@@ -392,7 +392,7 @@ var salutation= execution.getVariable("salutation");
 
 var subject= "Accepted Healthinsurance Application";
 
-var body="Dear " + salutation + " " + name + " " + surname + "\nWe inform you, that the process for your health insurance is completed.\n Best Regards,\nGP-Sommer";
+var body="Dear " + salutation + " " + name + " " + surname + "\nWe inform you, that the process for your health insurance is completed.\nBest Regards,\nGP-Sommer";
 
 // write JSON object
 var jsonString = {
@@ -480,7 +480,7 @@ JSON.stringify(jsonString);]]></camunda:script>
       <bpmn:incoming>SequenceFlow_1rg0d10</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0nn991w</bpmn:outgoing>
       <bpmn:timerEventDefinition>
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT2M</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT10M</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:eventBasedGateway id="ExclusiveGateway_1vfxa6l">

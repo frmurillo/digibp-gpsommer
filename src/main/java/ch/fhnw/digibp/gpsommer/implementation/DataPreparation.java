@@ -25,12 +25,6 @@ public class DataPreparation implements JavaDelegate {
     execution.setVariable("age",age);
     execution.setVariable("salutation",salutation);
     execution.setVariable("businessKey",businessKey);
-
-    System.out.println("\n\n\n######\n\n\n");
-    System.out.println("AGE IS: '" + (Integer) execution.getVariable("age") + "'");
-    System.out.println("BMI IS: '" + (Double) execution.getVariable("bmi") + "'");
-    System.out.println("businessKey: '" + (String) execution.getVariable("businessKey") + "'");
-    System.out.println("\n\n\n######\n\n\n");
   }
 
   private String getSalutation(String gender){
