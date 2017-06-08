@@ -86,7 +86,7 @@ var surname = execution.getVariable("requesterSurname");
 var email = execution.getVariable("requesterEmail");
 var salutation= execution.getVariable("salutation");
 
-var body = "Dear " + salutation + " " + name + " " + surname + "\nPlease sign the attached contract and send it to contract-gpsommerfhnw@outlook.com with the subject "Contract to be signed".\nBest Regards,\nGP-Sommer";
+var body = "Dear " + salutation + " " + name + " " + surname + "\nPlease sign the attached contract.\nBest Regards,\nGP-Sommer";
 
 // write JSON object
 var jsonString = {
